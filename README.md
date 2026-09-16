@@ -1,0 +1,1 @@
+[![CI](https://github.com/mit2323/Fingenie/actions/workflows/ci.yml/badge.svg)](https://github.com/mit2323/Fingenie/actions/workflows/ci.yml)
