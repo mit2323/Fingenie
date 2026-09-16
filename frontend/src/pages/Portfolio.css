@@ -1,0 +1,23 @@
+.live-quote-actions { margin: -4px 0 8px; }
+
+.live-quote {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  color: #316054;
+  background: #f0fbf7;
+  border: 1px solid #cde9df;
+  border-radius: 8px;
+}
+
+.live-quote span { display: block; color: #4c7a6d; font-size: 10px; font-weight: 700; }
+.live-quote strong { display: block; color: #13785e; font-size: 16px; margin-top: 2px; }
+.live-quote small { display: block; color: #5a8176; font-size: 10px; margin-top: 3px; }
+.live-quote .text-link { white-space: nowrap; }
+.live-caption { color: #7c8b9f; margin: 5px 0 0; font-size: 10px; }
+
+@media (max-width: 650px) {
+  .live-quote { grid-template-columns: 1fr; gap: 7px; }
+}
