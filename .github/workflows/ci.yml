@@ -10,6 +10,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      APP_NAME: FinGenie
+      APP_VERSION: "1.0.0"
+      ENVIRONMENT: development
+      DEBUG: "True"
+      HOST: 0.0.0.0
+      PORT: "8000"
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/fingenie
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      ACCESS_TOKEN_EXPIRE_MINUTES: "60"
+      ALGORITHM: HS256
+      LOG_LEVEL: INFO
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      FRONTEND_URL: http://localhost:5173
+
     services:
       postgres:
         image: postgres:16
@@ -39,23 +54,8 @@ jobs:
 
       - name: Run Alembic migrations
         working-directory: ./backend
-        env:
-          DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/fingenie
         run: alembic upgrade head
 
       - name: Run tests
         working-directory: ./backend
-        env:
-          APP_NAME: FinGenie
-          APP_VERSION: "1.0.0"
-          ENVIRONMENT: development
-          DEBUG: "True"
-          HOST: 0.0.0.0
-          PORT: "8000"
-          DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/fingenie
-          ACCESS_TOKEN_EXPIRE_MINUTES: "60"
-          ALGORITHM: HS256
-          LOG_LEVEL: INFO
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          FRONTEND_URL: http://localhost:5173
         run: pytest -v
